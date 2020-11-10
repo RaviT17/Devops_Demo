@@ -9,7 +9,7 @@ pipeline {
      steps{
         script{
 	  dir ('Infrasetup'){
-           sh "aws cloudformation validate-template --template-body file://cftemplate.yaml  --region ap-south-1"
+           sh "aws cloudformation validate-template --template-body file://cftemplate.yaml  --region $Region"
        		  
           }
         }
@@ -20,7 +20,7 @@ pipeline {
       steps{
         script{
           dir ('Infrasetup'){
-            sh  "aws cloudformation create-stack --stack-name $cfstackname --template-body file://cftemplate.yaml --region ap-south-1 --parameters  ParameterKey=AppInstanceType,ParameterValue=$Instancetype --capabilities CAPABILITY_IAM"
+            sh  "aws cloudformation create-stack --stack-name $cfstackname --template-body file://cftemplate.yaml --region $Region --parameters  ParameterKey=AppInstanceType,ParameterValue=$Instancetype --capabilities CAPABILITY_IAM"
             sleep(time: 40, unit: "SECONDS")
             PublicIP=sh("aws cloudformation list-exports --query \"Exports[?Name=='$env.cfstackname-AWSPublicIPFetch'].Value\" --output text")  
                }
