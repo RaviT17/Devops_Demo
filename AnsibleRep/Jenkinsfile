@@ -1,0 +1,19 @@
+pipeline{
+    agent any{
+        stages{
+            stage('Checkout SCM'){
+               steps{
+                   git credentialsId: 'c4bca1fe-d6fe-4fd5-8edd-bd49e9c49701', url: 'https://github.com/RaviT17/Devops_Demo.git'
+               }
+               }
+        
+            
+            
+            stage('Run Ansible Playbook'){
+                steps{
+                    ansiblePlaybook become: true, becomeUser: 'ec2-user', credentialsId: 'e110fc49-f9e4-4832-9331-2000eb1027b7', disableHostKeyChecking: true, installation: 'Anisble', inventory: 'AnsibleRep/hosts', playbook: 'AnsibleRep/playbook.yml'
+                }
+            }
+        }
+        
+}
