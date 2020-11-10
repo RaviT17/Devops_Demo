@@ -20,7 +20,7 @@
 [webservers]
 ## alpha.example.org
 ## beta.example.org
-13.234.78.78 ansible_ssh_pass=vagrant ansible_ssh_user=vagrant ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+13.234.78.78 ansible_ssh_pass=vagrant ansible_ssh_user=vagrant ansible_ssh_extra_args='-o StrictHostKeyChecking=no' ansible_user=ec2-user
 ## 192.168.1.100
 ## 192.168.1.110
 
