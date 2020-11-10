@@ -1,5 +1,5 @@
 pipeline{
-    agent any{
+    agent any
         stages{
             stage('Checkout SCM'){
                steps{
@@ -7,8 +7,6 @@ pipeline{
                }
                }
         
-            
-            
             stage('Run Ansible Playbook'){
                 steps{
                     ansiblePlaybook become: true, becomeUser: 'ec2-user', credentialsId: 'e110fc49-f9e4-4832-9331-2000eb1027b7', disableHostKeyChecking: true, installation: 'Anisble', inventory: 'AnsibleRep/hosts', playbook: 'AnsibleRep/playbook.yml'
