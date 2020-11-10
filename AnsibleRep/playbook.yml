@@ -1,0 +1,9 @@
+---
+- name: Playbook to perform multiple tasks
+  hosts: webservers
+  remote_user: ec2-user
+  become: yes
+  #vars_files:
+   #     - /var/lib/jenkins/workspace/ec2config-freestyle/AnsibleRep/roles/httpdsetup/vars/main.yml
+  roles:
+        - httpdsetup

@@ -1,0 +1,34 @@
+pipeline {
+  agent {label 'slavenode'}
+  
+stages{
+   	stage('Build docker image'){
+	steps{
+		script{
+		    dir('ApacheContsetup'){
+			    sh "sudo docker build -t firstimage:latest ."	    
+	              // sh "sudo docker run --name ${env.BUILD_ID}-mycontainer -d -it -p $env.HostPort:80 --privileged firstimage:latest /usr/sbin/init"
+		     
+	}	
+    } 
+}
+}
+	
+	stage('Build container and identify port'){
+	steps{
+		script{
+		     dir('ApacheContsetup'){	
+                      sh "sudo docker run --name ${env.BUILD_ID}-mycontainer -d -it -P --privileged firstimage:latest /usr/sbin/init"	    
+		      //sh "sudo docker container ls"
+		      sh "sudo docker port ${env.BUILD_ID}-mycontainer"
+		     }
+		  }
+            }
+	}
+	
+}
+}	
+	
+	
+	
+	

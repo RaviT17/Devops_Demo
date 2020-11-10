@@ -1,0 +1,25 @@
+---
+# tasks file for ec2config management
+
+ - name: checking service status
+   import_tasks: servicestatus_check.yml
+
+ - name: docker service start
+   import_tasks: ../../../service.yml
+   vars :
+       SERVICE:
+       -  service:  docker
+          state:    started
+          enabled: yes
+   ignore_errors: yes
+
+#- name: copying files to target, if task performs
+#  yum:
+#     name: "httpd"
+#     state: present
+#  notify:
+#   - Copy required files to target
+
+# - name: showing predefined variable
+#   debug:
+#     var: {{DevopsTool}}

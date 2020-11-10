@@ -1,0 +1,40 @@
+pipeline {
+  agent any
+  parameters {
+         string defaultValue: '', description: 'Give CFstackname', name: 'cfstackname', trim: false
+   
+  }
+  stages {
+   stage('cloudformationvalidate'){
+     steps{
+        script{
+	  dir ('Infrasetup'){
+           sh "aws cloudformation validate-template --template-body file://cftemplate.yaml  --region ap-south-1"
+       		  
+          }
+        }
+     }
+      }
+    
+    stage('cloudformationstackcreation'){
+      steps{
+        script{
+          dir ('Infrasetup'){
+            sh  "aws cloudformation create-stack --stack-name $cfstackname --template-body file://cftemplate.yaml --region ap-south-1 --parameters  ParameterKey=AppInstanceType,ParameterValue=$Instancetype --capabilities CAPABILITY_IAM"
+            sleep(time: 40, unit: "SECONDS")
+            PublicIP=sh("aws cloudformation list-exports --query \"Exports[?Name=='$env.cfstackname-AWSPublicIPFetch'].Value\" --output text")  
+               }
+	     }
+	  }
+	}
+    	    
+  }	  
+	  
+    
+  post {
+     always {
+    
+        cleanWs()
+    }
+  }
+}

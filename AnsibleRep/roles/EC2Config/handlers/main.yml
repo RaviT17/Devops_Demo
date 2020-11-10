@@ -1,0 +1,9 @@
+---
+# handlers file for ec2config role
+
+- name: Copy required files to target
+  copy:
+     src: "index.html"
+     dest: "{{dest_path}}"
+   # content: "Welcome to world of Ansible"
+  register: index_file

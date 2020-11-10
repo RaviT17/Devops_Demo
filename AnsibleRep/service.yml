@@ -1,0 +1,7 @@
+---
+- name: Starting service
+  service:
+    name: "{{item.service}}"
+    state: "{{item.state}}"
+    enabled: "{{item.enabled}}"
+  loop: "{{SERVICE}}"

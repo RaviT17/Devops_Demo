@@ -1,0 +1,76 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  VM for Demo
+Parameters:
+  EC2SG:
+    Type: 'AWS::EC2::SecurityGroup::Id'
+    Description: Choose the Security Group
+    Default:  sg-0047823eaf51566bb
+  env:
+    Type: String
+    Description: Environment
+    AllowedValues:
+      - dev
+      - stage
+      - demo
+      - Prod
+      - pre-prod
+      - prod
+      - val
+    Default: dev
+  EC2KeyPair:
+    Type: 'AWS::EC2::KeyPair::KeyName'
+    Default: jenkins
+  AppInstanceType:
+    Type: String
+    Default: t2.2xlarge
+    AllowedValues:
+      - t2.micro
+      - t2.medium
+      - t2.large
+      - t2.xlarge
+      - t2.2xlarge
+      - m4.2xlarge
+      - m4.4xlarge
+      - c5.2xlarge
+      - t3.xlarge
+      - m5.4xlarge
+      - c4.2xlarge
+      - c4.4xlarge
+Resources:
+  EC2instanceactipole:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !Ref AppInstanceType
+      KeyName: !Ref EC2KeyPair
+      DisableApiTermination: false
+      ImageId: ami-0e306788ff2473ccb
+      NetworkInterfaces:
+        - GroupSet:
+            - !Ref EC2SG
+          AssociatePublicIpAddress: 'true'
+          DeleteOnTermination: 'true'
+          DeviceIndex: '0'
+          SubnetId: subnet-05f8ec6d
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvdb
+          Ebs:
+            VolumeSize: '100'
+            VolumeType: gp2
+
+      Tags:
+        - Key : Name
+          Value: Jenkins Slave Node
+    
+      UserData:
+        Fn::Base64: !Sub |
+           #!/bin/bash
+           sudo yum update -y
+           sudo yum install docker -y
+           
+Outputs:
+   AWSPublicIPFetch:
+     Description: Output to fetch Instance PublicIP
+     Value: !GetAtt EC2instanceactipole.PublicIp 
+     Export:
+       Name: !Sub "${AWS::StackName}-AWSPublicIPFetch"
