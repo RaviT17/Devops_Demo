@@ -9,7 +9,7 @@ pipeline{
         
             stage('Run Ansible Playbook'){
                 steps{
-                    ansiblePlaybook become: true, becomeUser: 'ec2-user', credentialsId: 'e110fc49-f9e4-4832-9331-2000eb1027b7', disableHostKeyChecking: true, installation: 'Anisble', inventory: 'AnsibleRep/hosts', playbook: 'AnsibleRep/playbook.yml'
+                   ansiblePlaybook become: true, becomeUser: null, credentialsId: '6b660bbb-ae80-4491-ac10-37f8710fc0ac', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'AnsibleRep/hosts', playbook: 'AnsibleRep/playbook.yml'
                 }
             }
         }
