@@ -24,7 +24,7 @@
 #   debug:
 #     var: {{DevopsTool}}
 
-   - name: Install httpd
-     yum:
+  - name: Install httpd
+    yum:
        name: httpd
        state: present
