@@ -13,18 +13,13 @@
           enabled: yes
    ignore_errors: yes
 
-#- name: copying files to target, if task performs
-#  yum:
-#     name: "httpd"
-#     state: present
-#  notify:
-#   - Copy required files to target
+ - name: copying files to target, if task performs
+   yum:
+      name: "httpd"
+      state: present
+   notify:
+    - Copy required files to target
 
 # - name: showing predefined variable
 #   debug:
 #     var: {{DevopsTool}}
-
-  - name: Install httpd
-    yum:
-       name: httpd
-       state: present
