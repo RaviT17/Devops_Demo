@@ -5,7 +5,7 @@ Parameters:
   EC2SG:
     Type: 'AWS::EC2::SecurityGroup::Id'
     Description: Choose the Security Group
-    Default:  sg-0047823eaf51566bb
+    Default:  sg-0f6b104f1e156ebaa
   env:
     Type: String
     Description: Environment
@@ -44,14 +44,14 @@ Resources:
       InstanceType: !Ref AppInstanceType
       KeyName: !Ref EC2KeyPair
       DisableApiTermination: false
-      ImageId: ami-0e306788ff2473ccb
+      ImageId: i-0e1799c5952f7d7da
       NetworkInterfaces:
         - GroupSet:
             - !Ref EC2SG
           AssociatePublicIpAddress: 'true'
           DeleteOnTermination: 'true'
           DeviceIndex: '0'
-          SubnetId: subnet-05f8ec6d
+          SubnetId: subnet-1620615a
       BlockDeviceMappings:
         - DeviceName: /dev/xvdb
           Ebs:
