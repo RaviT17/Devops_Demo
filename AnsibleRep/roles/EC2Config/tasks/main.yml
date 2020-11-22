@@ -19,6 +19,11 @@
       state: present
    notify:
     - Copy required files to target
+    
+ - name: Removing httpd
+   yum:
+      name: "httpd"
+      state: absent
 
 # - name: showing predefined variable
 #   debug:
