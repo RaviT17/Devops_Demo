@@ -44,7 +44,7 @@ Resources:
       InstanceType: !Ref AppInstanceType
       KeyName: !Ref EC2KeyPair
       DisableApiTermination: false
-      ImageId: i-0e1799c5952f7d7da
+      ImageId: ami-026669ec456129a70
       NetworkInterfaces:
         - GroupSet:
             - !Ref EC2SG
