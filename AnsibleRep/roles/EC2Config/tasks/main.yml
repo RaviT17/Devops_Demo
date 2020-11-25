@@ -6,12 +6,6 @@
 
  - name: docker service start
    import_tasks: ../../../service.yml
-   #vars :
-   #    SERVICE:
-   #    -  service:  docker
-   #       state:    started
-   #       enabled: yes
-   ignore_errors: yes
 
  - name: copying files to target, if task performs
    yum:
