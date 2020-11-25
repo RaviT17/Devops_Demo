@@ -31,6 +31,7 @@
    
  - name: Showing OS Version
    debug:
+     var: OSVersion
       
 
 # - name: showing predefined variable
