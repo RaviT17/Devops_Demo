@@ -2,3 +2,4 @@
 # defaults file for pkgrole
 
 dest_path: /var/w/html
+OSVersion: Linux7.2
