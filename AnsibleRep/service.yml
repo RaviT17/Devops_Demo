@@ -4,4 +4,4 @@
     name: "{{item.service}}"
     state: "{{item.state}}"
     enabled: "{{item.enabled}}"
-  loop: SERVICE
+  loop: "{{SERVICE}}"
