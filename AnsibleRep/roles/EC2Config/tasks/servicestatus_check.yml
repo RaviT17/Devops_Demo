@@ -3,6 +3,7 @@
   command: systemctl status "{{item}}"
   with_items:
   - docker
+    httpd
   register: result
   ignore_errors: yes
 
