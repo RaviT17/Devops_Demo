@@ -24,6 +24,14 @@
    yum:
       name: "httpd"
       state: absent
+      
+ - name: Executing commands
+   command: uname
+   register: OSVersion
+   
+ - name: Showing OS Version
+   debug:
+      
 
 # - name: showing predefined variable
 #   debug:
