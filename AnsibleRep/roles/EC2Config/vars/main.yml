@@ -3,6 +3,7 @@
 
 DevopsTool: Ansible
 dest_path: /var/www/html
+OSVersion: Linux7.1
 
 
 
