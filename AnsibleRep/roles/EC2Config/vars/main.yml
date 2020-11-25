@@ -3,7 +3,11 @@
 
 DevopsTool: Ansible
 dest_path: /var/www/html
-# OSVersion: Linux7.1
+OSVersion: Linux7.1
+SERVICE:
+   -  service: docker
+      state:   started
+      enabled: yes
 
 
 
