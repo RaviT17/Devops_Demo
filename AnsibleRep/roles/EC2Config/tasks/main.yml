@@ -25,9 +25,9 @@
       name: "httpd"
       state: absent
       
- #- name: Executing commands
- #  command: uname
- #  register: OSVersion
+ - name: Executing commands
+   command: uname
+   register: OSVersion
    
  - name: Showing OS Version
    debug:
