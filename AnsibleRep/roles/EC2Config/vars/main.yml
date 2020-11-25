@@ -2,6 +2,7 @@
 # vars file for httpdsetup
 
 DevopsTool: Ansible
+dest_path: /var/www/html
 
 
 
