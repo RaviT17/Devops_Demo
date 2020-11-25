@@ -1,4 +1,4 @@
 ---
 # defaults file for pkgrole
 
-dest_path: /var/ww/html
+dest_path: /var/www/html
