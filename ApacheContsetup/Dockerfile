@@ -11,7 +11,6 @@ RUN rm -rf /lib/systemd/system/sockets.target.wants/udev;
 RUN rm -rf /lib/systemd/system/sockets.target.wants/initctl;
 RUN rm -rf /lib/systemd/system/basic.target.wants/;
 RUN rm -rf /lib/systemd/system/anaconda.target.wants/*;
-VOLUME [ “/sys/fs/cgroup” ]
 RUN yum install httpd -y;yum clean all; systemctl enable httpd.service
 COPY index.html /var/www/html/
 EXPOSE 80
