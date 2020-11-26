@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER “MD aakir” mdavir@nettolls.net
+MAINTAINER "Docker file by Ravi" 
 ENV container docker
 RUN yum -y update; yum clean all
 RUN yum -y install systemd; yum clean all;
