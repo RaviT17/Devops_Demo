@@ -14,6 +14,5 @@ RUN rm -rf /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ “/sys/fs/cgroup” ]
 RUN yum install httpd -y;yum clean all; systemctl enable httpd.service
 COPY index.html /var/www/html/
-CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]
 EXPOSE 80
 CMD ["sleep","600"]
