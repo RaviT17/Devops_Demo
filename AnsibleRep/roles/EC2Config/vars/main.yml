@@ -8,6 +8,10 @@ SERVICE:
    -  service: docker
       state:   started
       enabled: yes
+      
+   -  service: sshd
+      state: restarted
+      enabled: yes
 
 
 
